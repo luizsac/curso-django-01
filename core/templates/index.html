@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Django Index</title>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    <center>
+        <h1>Index</h1>
+        <img id="django-pony" src="{% static 'images/django-pony.png' %}">
+        <h2>{{curso}}</h2>
+
+        <table>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+            </tr>
+            {% for produto in produtos %}
+            <tr>
+                <td><a href="{% url 'produto' produto.id %}"> {{ produto.nome }} </a></td>
+                <td>{{ produto.preco }}</td>
+                <td>{{ produto.estoque }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </center>
+</body>
+</html>
